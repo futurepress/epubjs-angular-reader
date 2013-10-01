@@ -1,0 +1,13 @@
+<a class="toc_toggle" ng-click="toggleItem(item.id)" ng-class="{display: item.subitems.length > 0}">&nbsp;</a>
+<a ng-href="{{item.href}}" 
+	 class="toc_link{{ item.type }}" 
+	 ng-click="updateCurrent(item.id)"
+	 post-click >{{item.label}}</a>
+
+<ul>
+		<li ng-repeat="item in item.subitems" 
+				ng-include="'views/toc-item.html'"
+				id="toc-{{item.id}}"
+				ng-class="{currentChapter: active == item.id}"
+				data-parent="{{item.parent}}"></li>
+</ul>

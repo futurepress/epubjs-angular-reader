@@ -1,0 +1,67 @@
+application: epubjs-reader
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /(.*\.css)
+  mime_type: text/css
+  static_files: src/\1
+  upload: src/(.*\.css)
+
+- url: /(.*\.html)
+  mime_type: text/html
+  static_files: src/\1
+  upload: src/(.*\.html)
+
+- url: /(.+)/(.*\.xhtml)
+  mime_type: application/xhtml+xml
+  static_files: src/\1/\2 
+  upload: src/(.*\.xhtml)
+
+- url: /(.*\.js)
+  mime_type: text/javascript
+  static_files: src/\1
+  upload: src/(.*\.js)
+
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: src/\1
+  upload: src/(.*\.json)
+
+- url: /(.*\.xml)
+  mime_type: application/xml
+  static_files: src/\1
+  upload: src/(.*\.xml)
+
+# image files
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: src/\1
+  upload: src/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+# book files
+- url: /(.*\.opf)
+  mime_type: application/oebps-package+xml
+  static_files: src/\1
+  upload: src/(.*\.opf)
+
+- url: /(.*\.ncx)
+  mime_type: application/x-dtbncx+xml
+  static_files: src/\1
+  upload: src/(.*\.ncx)
+  
+# index files
+- url: /(.+)/
+  static_files: src/\1/index.html
+  upload: src/(.+)/index.html
+
+# redirect to 'url + /index.html' url.
+# - url: /(.+)
+#   static_files: src/redirector.html
+#   upload: src/redirector.html
+
+# site root
+- url: /(([^/]+).xhtml|((\d+)/(.+)))?
+  static_files: src/index.html
+  upload: src/index.html

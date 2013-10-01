@@ -1,0 +1,12 @@
+<div id="toclist">
+		<h3>Table of Contents</h3>
+		<ul>
+				<li id="toc-{{item.id}}" 
+						ng-repeat="item in toc" 
+						ng-include="'views/toc-item.html'" 
+						ng-class="{currentChapter: active == item.id}"
+						data-parent="{item.parent}"
+						></li>
+		</ul>
+	</div>
+</div>

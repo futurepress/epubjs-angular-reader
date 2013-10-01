@@ -1,0 +1,11 @@
+<div id="prev" class="arrow {{prevArrowState}}" ng-click="book.prevPage()">‹</div>
+
+<div id="area" ng-swipe-right="book.prevPage()" ng-swipe-left="book.nextPage()"></div>
+
+<div id="next" class="arrow {{nextArrowState}}" ng-click="book.nextPage()">›</div>
+
+<div id="loader" ng-class="{hide: isReady}"><img src="img/loader.gif"></div>
+
+<div id="divider" ng-class="{show: isReady}"></div>
+
+<!-- <div id="swipeArea" ng-swipe-left="book.prevPage()" ng-swipe-right="book.nextPage()"></div> -->
