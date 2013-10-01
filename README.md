@@ -9,7 +9,7 @@ Epub.js provides common ebook functions (such as persistence and pagination) wit
 
 Unlike an application, our HTML/JavaScript reader can be hosted anywhere and can be easily customized using JavaScript, such as changing the interface or adding annotation functionality.
 
-[Try it while reading Moby Dick](http://futurepress.github.com/epub-reader/)
+[Try it while reading Moby Dick](http://epubjs-reader.appspot.com/)
 
 Getting Started
 -------------------------
