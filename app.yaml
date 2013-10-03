@@ -36,10 +36,15 @@ handlers:
   upload: src/(.*\.xml)
 
 # image files
-- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png|svg))
   static_files: src/\1
-  upload: src/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  upload: src/(.*\.(bmp|gif|ico|jpeg|jpg|png|svg))
 
+# font files
+- url: /(.*\.(otf|eot|ttf|woff))
+  static_files: src/\1
+  upload: src/(.*\.(otf|eot|ttf|woff))
+  
 # book files
 - url: /(.*\.opf)
   mime_type: application/oebps-package+xml
