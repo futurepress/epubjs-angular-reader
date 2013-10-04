@@ -8,7 +8,7 @@ angular.module('Reader')
 				src: '@',
 				onAnnotationsLoaded: '&'
 			},
-			templateUrl: '',
+			// templateUrl: '',
 
 			controller: function($scope, $rootScope, $q){
 				$scope.annotator = null;

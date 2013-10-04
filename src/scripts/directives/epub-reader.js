@@ -29,7 +29,6 @@ angular.module('Reader')
 				}
 				
 				gAnalytics.init('UA-43609037-1');
-				
 				if(isDocument($location.path())) {
 					$scope.path = pathFromLocation();
 				} else {

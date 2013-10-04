@@ -108,6 +108,8 @@ angular.module('Reader')
 				attrs.$observe('path', function(value) {
 					if(scope.isReady && attrs.path) {
 						book.goto(attrs.path);
+					} else if(attrs.path.length > 1) {
+						book.settings.goto = attrs.path;
 					}
 				});
 				
