@@ -41,6 +41,7 @@ angular.module('Reader')
 				$scope.currentChapterId = '';
 				$scope.open = false;
 				$scope.single = false;
+				$scope.currentCfi = '';
 				
 				//-- Set the title and other metadata in head
 				$rootScope.metadata = $scope.metadata;
@@ -49,7 +50,7 @@ angular.module('Reader')
 				
 				$rootScope.$on('$locationChangeSuccess', function(e, url){
 					var path;
-
+					
 					if(!silent) {
 						path = $location.path();
 						
@@ -72,13 +73,21 @@ angular.module('Reader')
 				}
 				
 				$scope.afterChapterDisplayed = function(e) {
-
-					$scope.$apply(function(){
-
-						if($scope.prevHash) $location.hash('').replace();
-						$location.path(e.cfi).replace();
-
-					});
+					
+					$scope.currentCfi = e.cfi;
+					
+					
+					// if(!$scope.$$phase) {
+						
+						// $scope.$apply(function(){
+					// $location.hash('');
+					// $location.path($scope.currentCfi);
+					// console.debug("e.cfi", e.cfi);
+					// // silent = true;
+					// if(!$scope.$$phase) { 
+					// 	$scope.$apply();
+					// }
+					// }
 					
 					$scope.updateAnnotations();
 					
@@ -88,10 +97,16 @@ angular.module('Reader')
 				
 				$scope.afterPageChanged = function(e) {
 					var hash = e.detail;
-
-					$location.path(hash).replace();
-					silent = true;
 					
+					if($scope.currentCfi == hash) return;
+					
+					$scope.currentCfi = hash;
+
+					$location.hash('');
+					$location.path($scope.currentCfi);
+
+					silent = true;
+
 					var notes = [];
 
 					if($scope.annotator) {
