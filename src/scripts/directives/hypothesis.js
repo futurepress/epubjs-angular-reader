@@ -25,7 +25,7 @@ angular.module('Reader')
 
 				var annotator = window.annotator = new window.Annotator.Host(element,
 					{
-						"app": "http://multi-frame-8.dokku.hypothes.is/app/",
+						"app": "https://hypothes.is/app/",
 						"Heatmap": {"container": ".annotator-frame"},
 						"Toolbar": {"container": "#singlepage"}
 					});
