@@ -23,7 +23,7 @@ angular.module('Reader')
 				$scope.nextArrowState = "";
 				$scope.isReady = false;
 
-				var book = $scope.book = $rootScope.book = ePub({ restore: true, version: 0.1 });
+				var book = $scope.book = $rootScope.book = ePub({ restore: true, version: 0.12 });
 				
 				$scope.metadata = book.getMetadata();
 				$scope.toc = book.getToc();

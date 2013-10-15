@@ -1,4 +1,3 @@
-.annotator-hl, .annotator-hl-active {
-  background: #feffd5 !important;
-  cursor: pointer;
+.ui-loader {
+  display: none;
 }

@@ -50,12 +50,13 @@ angular.module('Reader')
 				
 				$rootScope.$on('$locationChangeSuccess', function(e, url){
 					var path;
-					
+					// console.log("url", url, silent)
 					if(!silent) {
 						path = $location.path();
 						
 						if(isDocument(path)) {
 							$scope.path = pathFromLocation();
+							// console.log("path", path)
 						} else {
 							$scope.cfi = decodeURIComponent(path);
 						}
@@ -76,7 +77,7 @@ angular.module('Reader')
 					
 					$scope.currentCfi = e.cfi;
 					
-					
+					// console.debug("after chapter", $scope.currentCfi)
 					// if(!$scope.$$phase) {
 						
 						// $scope.$apply(function(){
@@ -88,8 +89,9 @@ angular.module('Reader')
 					// 	$scope.$apply();
 					// }
 					// }
-					
-					$scope.updateAnnotations();
+					if($scope.annotator) {
+						$scope.updateAnnotations();
+					}
 					
 					gAnalytics.trackChapterChange(e)
 					gAnalytics.trackLinkFollows(e);
@@ -101,7 +103,7 @@ angular.module('Reader')
 					if($scope.currentCfi == hash) return;
 					
 					$scope.currentCfi = hash;
-
+					// console.debug("after page", $scope.currentCfi)
 					$location.hash('');
 					$location.path($scope.currentCfi);
 
@@ -120,24 +122,27 @@ angular.module('Reader')
 				
 				$scope.updateAnnotations = function() {
 					var annotatations = [],
-							annotator = $scope.book.render.iframe.contentWindow.Annotator,
-							_$, $annotations, width;
-					
+							annotator = $scope.book.render.iframe.contentWindow.annotator,
+							//$scope.book.render.iframe.contentWindow.Annotator,
+							_$ = $scope.book.render.iframe.contentWindow.annotator.constructor.$, 
+							$annotations, width;
+
 					if($scope.noUpdate) {
 						$scope.noUpdate = false;
 						return;
 					}
 					
-						
+					
 					if(!annotator) {
 						if($scope.annotator) $scope.annotator.updateViewer([]);
 						return;	
 					};
 					
-				  _$ = annotator.$;
+					//_$ = annotator.$;
+					
 					$annotations = _$(".annotator-hl");
 					width = $scope.book.render.iframe.clientWidth;
-					
+
 					//-- Find visible annotations
 						
 					$annotations.each(function(){
@@ -145,19 +150,20 @@ angular.module('Reader')
 								left = this.getBoundingClientRect().left;
 								
 						if(left >= 0 && left <= width) {
-							// console.debug("on screen", left);
 							annotatations.push($this.data('annotation'));
 						}
 						
 					});
-					// console.debug("annotatations", $annotations, annotatations)
+					// console.debug("annotatations", annotatations)
+					
 					//-- Update viewer
 					$scope.annotator.updateViewer(annotatations);
 
 				};
 				
 				$scope.afterAnnotationsLoaded = function(annotator, annotatations) {
-					var _$ = $scope.book.render.iframe.contentWindow.Annotator.$;
+					var _$ = $scope.book.render.iframe.contentWindow.annotator.constructor.$; 
+					//$scope.book.render.iframe.contentWindow.Annotator.$;
 					
 					// Initialize annotation event tracking
 					gAnalytics.trackAnnotations();
