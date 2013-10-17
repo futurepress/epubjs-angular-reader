@@ -124,7 +124,7 @@ angular.module('Reader')
 					var annotatations = [],
 							annotator = $scope.book.render.iframe.contentWindow.annotator,
 							//$scope.book.render.iframe.contentWindow.Annotator,
-							_$ = $scope.book.render.iframe.contentWindow.annotator.constructor.$, 
+							_$, 
 							$annotations, width;
 
 					if($scope.noUpdate) {
@@ -138,7 +138,7 @@ angular.module('Reader')
 						return;	
 					};
 					
-					//_$ = annotator.$;
+					_$ = annotator.constructor.$;
 					
 					$annotations = _$(".annotator-hl");
 					width = $scope.book.render.iframe.clientWidth;
