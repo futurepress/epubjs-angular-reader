@@ -14,7 +14,7 @@ angular.module('Reader')
 				var silent = true;
 				
 				var isDocument = function(path) {
-					return (path.search(".xhtml") != -1);
+					return (path.search(".xhtml") != -1 || path.search(".html") != -1);
 				}
 				
 				var pathFromLocation	= function() {
