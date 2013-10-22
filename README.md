@@ -1,7 +1,7 @@
 Epub.js Reader
 ================================
 
-![Demo](http://blogs.ischool.berkeley.edu/i202f13/files/2013/10/Screen-Shot-2013-10-10-at-8.02.43-PM-1024x627.png)
+![Demo](http://fchasen.com/futurepress/epubjs-reader_moby-dick.png)
 
 [Try it while reading Moby Dick](http://epubjs-reader.appspot.com/)
 
