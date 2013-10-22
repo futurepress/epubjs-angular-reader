@@ -39,6 +39,20 @@ Other available attributes are:
 * metadata
 * toc
 
+Annotations with Hypothes.is
+-------------------------
+
+[hypothes.is/what-is-it/](http://hypothes.is/what-is-it/)
+
+Hypothes.is is the nonprofit that has developed the annotation platform you can use in combination with the reader.
+
+In order to use the annotation tool, you must sign up for a Hypothes.is account.
+
+* Click the dialogue icon dialogue on the right.
+* Select the “Create an account” tab.
+* Select a username and password.
+
+
 Deploying to App Engine
 -------------------------
 
