@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Reader')
-	.directive('hypothesis', function() {
+	.directive('hypothesis', [ '$window', function($window) {
 		return {
 			restrict: "E",
 			scope: {
@@ -23,12 +23,13 @@ angular.module('Reader')
 					});
 				}
 
-				var annotator = window.annotator = new window.Annotator.Host(element,
-					{
+				var body = $window.document.body;
+
+				var annotator = window.annotator = new window.Annotator.Host(body, {
 						"app": "https://hypothes.is/app/",
-						"Heatmap": {"container": ".annotator-frame"},
-						"Toolbar": {"container": "#singlepage"}
-					});
+            "Toolbar": {container:"#singlepage"}
+        });
+        annotator.frame.appendTo(element);
 
 				annotator.subscribe('annotationEditorShown', function () {
 					setSinglePage(true);
@@ -57,4 +58,4 @@ angular.module('Reader')
 			}
 
 		}
-	});
+	}]);
