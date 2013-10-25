@@ -39,16 +39,25 @@ angular.module('Reader')
 					setSinglePage(true);
 					window.annotator.setVisibleHighlights(true)
 				});
-
+				
+				/*
 				annotator.subscribe('annotationEditorHidden', function () {
-					setSinglePage(false);
-					window.annotator.setVisibleHighlights(false)
+					// setSinglePage(false);
+					// window.annotator.setVisibleHighlights(false)
 				});
 				annotator.subscribe('annotationViewerHidden', function () {
-					setSinglePage(false);
-					window.annotator.setVisibleHighlights(false)
+					// setSinglePage(false);
+					// window.annotator.setVisibleHighlights(false)
 				});
-
+				*/
+				
+				//-- Can't use annotationViewerHidden since it fires on any click outside the viewer
+				$(".tri-icon").on("click", function () {
+					if (scope.$parent.single) {
+						setSinglePage(false);
+					}
+				})
+				
 				scope.annotator = annotator;
 
 				scope.annotator.subscribe("annotationsLoaded", function(e){
