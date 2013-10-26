@@ -1,21 +1,19 @@
 <div id="sidebar" ng-class="{open: open, single: single}">
-	<epubtoc toc="toc"></epubtoc>
+	<epubtoc toc="toc" current="{{currentChapterId}}"></epubtoc>
 </div>
 
-<!-- <div id="hypothesis"></div> -->
 <hypothesis id="hypothesis" on-annotations-loaded="afterAnnotationsLoaded(annotator, annotations)"></hypothesis>
 
 <div id="main" ng-class="{open: open, single: single}">
 	<div id="opener">
-		<a id="open" ng-click="open = !open" class="icon" ng-class="{open: open}"><img src="img/menu-icon.png"></a>
+		<a id="open" ng-click="open = !open" class="icon" ng-class="{open: open}"><img src="images/menu-icon.png"></a>
 	</div>
 	<div id="singlepage">
-		<a id="single" ng-click="single = !single" class="icon" ng-class="{single: single}"><img src="img/annotate.png"></a>
 	</div>
 	<div id="titlebar">
 		<span id="book-title">{{metadata.bookTitle}}</span>
 		<span id="title-seperator" ng-class="{hidden: !metadata.bookTitle}">&nbsp;&nbsp;–&nbsp;&nbsp;</span>
 		<span id="chapter-title">{{metadata.creator}}</span>
 	</div>
-	<epubviewer src="{{src}}" path="{{path}}" metadata="metadata" toc="toc" on-ready="afterReady(book)" on-chapter-displayed="afterChapterDisplayed(e)" on-page-changed="afterPageChanged(e)"></epubviewer>
+	<epubviewer src="{{src}}" path="{{path}}" cfi="{{cfi}}" metadata="metadata" toc="toc" on-ready="afterReady(book)" on-chapter-displayed="afterChapterDisplayed(e)" on-page-changed="afterPageChanged(e)"></epubviewer>
 </div>
