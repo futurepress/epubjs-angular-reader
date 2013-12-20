@@ -679,9 +679,8 @@ EPUBJS.plugins = EPUBJS.plugins || {};
 
 EPUBJS.filePath = EPUBJS.filePath || "/epubjs/";
 
-(function() {
+(function(root) {
 
-	var root = this;
 	var previousEpub = root.ePub || {};
 	
 	var ePub = root.ePub = function() {
@@ -734,7 +733,7 @@ EPUBJS.filePath = EPUBJS.filePath || "/epubjs/";
 	//Node
 	module.exports = ePub;
 
-})();
+})(window);
 EPUBJS.Book = function(options){
 
 	var book = this;
@@ -1333,6 +1332,11 @@ EPUBJS.Book.prototype.prevChapter = function() {
 	return this.displayChapter(this.spinePos, true);
 };
 
+EPUBJS.Book.prototype.getCurrentLocationCfi = function() {
+	if(!this.isRendered) return false;
+	return this.render.currentLocationCfi;
+};
+
 EPUBJS.Book.prototype.gotoCfi = function(cfi){
 	if(!this.isRendered) return this._enqueue("gotoCfi", arguments);
 	return this.displayChapter(cfi);
@@ -1881,7 +1885,7 @@ EPUBJS.EpubCFI.prototype.pathTo = function(node) {
 	var stack = [],
 		children;
 
-	while(node && node.parentNode !== null) {
+	while(node && node.parentNode.nodeName == "html" && node.parentNode !== null) {
 		children = node.parentNode.children;
 
 		stack.unshift({
@@ -1929,7 +1933,6 @@ EPUBJS.EpubCFI.prototype.parse = function(cfiStr) {
 	cfi.chapter = this.getChapter(cfiStr);
 
 	cfi.fragment = this.getFragment(cfiStr);
-
 	cfi.spinePos = (parseInt(cfi.chapter.split("/")[2]) / 2 - 1 ) || 0;
 
 	chapId = cfi.chapter.match(/\[(.*)\]/);
@@ -1979,9 +1982,9 @@ EPUBJS.EpubCFI.prototype.getElement = function(cfi, _doc) {
 		children = Array.prototype.slice.call(element.children),
 		num, index, part,
 		has_id, id;
-	
-	sections.shift(); //-- html
-	
+
+	// sections.shift(); //-- html
+
 	while(sections.length > 0) {
 	
 		part = sections.shift();
@@ -1993,7 +1996,7 @@ EPUBJS.EpubCFI.prototype.getElement = function(cfi, _doc) {
 		}else{
 	
 			element = children[part.index];
-	
+
 			if(!children) console.error("No Kids", element);
 	
 		}

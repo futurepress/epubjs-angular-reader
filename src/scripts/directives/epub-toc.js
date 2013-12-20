@@ -15,7 +15,6 @@ angular.module('Reader')
 				$scope.active = '';
 
 				$scope.openParents = function($el) {
-
 					$('.openChapter').removeClass("openChapter");
 					$el.parents('li').addClass("openChapter");
 				}

@@ -1,5 +1,15 @@
 <div id="sidebar" ng-class="{open: open, single: single}">
+	<div id="controls">
+		<input id="searchBox" placeholder="search" type="search">
+		<!-- <a id="fullscreen">
+			<img id="fullscreenicon" src="img/fullscreen.png">
+			<img id="cancelfullscreenicon" src="img/cancelfullscreen.png" style="display: none">
+		</a> -->
+	</div>
 	<epubtoc toc="toc" current="{{currentChapterId}}" ></epubtoc>
+	<div id="searchView">
+		<ul id="searchResults"></ul>
+	</div>
 </div>
 
 <hypothesis id="hypothesis"

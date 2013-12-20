@@ -123,6 +123,17 @@ body {
 
 }
 
+#controls {
+  background: #4e4e4e;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 15px;
+  padding: 10px 0;
+}
+
+
 #toclist {
   overflow-x: hidden;
   overflow-y: auto;
@@ -343,6 +354,66 @@ body {
 .currentChapter > .toc_toggle:before,
 .openChapter > .toc_toggle:before {
   content: '▾';
+}
+
+#searchBox {
+  width: 200px;
+  float: left;
+  margin-left: 12px;
+  margin-top: -2px;
+}
+
+#toclist.hidden {
+  display: none;
+}
+
+#searchView {
+  width: 300px;
+  height: 100%;
+  display: none;
+}
+
+#searchResults {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-left: 20px;
+  display: block;
+}
+
+#searchResults li {
+  margin-bottom:10px;
+  width: 225px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  list-style: none;
+}
+
+#searchResults a {
+  color: #AAA;
+  text-decoration: none;
+}
+
+#searchResults p {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+#searchResults p .match {
+  background: #ccc;
+  color: #000;
+}
+
+#searchResults li > p {
+  color: #AAA;
+}
+
+#searchResults li a:hover {
+  color: #E2E2E2;
+}
+
+#searchView.shown {
+  display: block;
+  overflow-y: scroll;
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1040px) {
