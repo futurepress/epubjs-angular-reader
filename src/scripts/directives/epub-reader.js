@@ -186,12 +186,12 @@ angular.module('Reader')
 				};
 				
 				// Search
-				$scope.SEARCH_SERVER = "http://epubjs-search.herokuapp.com";
+				$scope.SEARCH_SERVER = "https://epubjs-search.herokuapp.com";
 				
 				$scope.search = function(q, callback) {
 					var fetch = $.ajax({
 						dataType: "json",
-						url: $scope.SEARCH_SERVER + "/search?q=" + encodeURIComponent(q) 
+						url: $scope.SEARCH_SERVER + "/search?q=" + encodeURIComponent(q)
 					});
 				
 					fetch.fail(function(err) {
