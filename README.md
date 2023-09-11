@@ -8,7 +8,7 @@ Epub.js Reader
 About the Reader
 -------------------------
 This reader came out of the Berkeley Future of eBooks classes in Fall & Spring 2013.
-It renders a ePub version of the TDO book using the [Epub.js](http://futurepress.github.com/epub.js/) library.
+It renders a ePub version of the TDO book using the [Epub.js](https://github.com/futurepress/epub.js) library.
 
 It is very much still a work in progress, so please bear with us. We would greatly appreciate reports on any bug or issues you come across
 
